@@ -3,16 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>LeetLog</title>
 </head>
 <body>
-    <form action="{{url_for('index')}}" method="post">
-        <input type="text" name="number">
-        <input type="text" name="priority">
-        <input type="text" name="pattern">
-        <input type="text" name="notes">
+    <h2 class="title-class">LeetLog</h2>
+    <form class="form-card" action="{{url_for('index')}}" method="post">
+        <input type="text" name="number" placeholder="Please Enter the Number of Your Problem">
+        <input type="text" name="priority" placeholder="Enter Priority Level">
+        <input type="text" name="pattern" placeholder="Pattern Type">
+        <input type="text" name="notes" placeholder="Notes">
         <button type="submit">Add Problem</button>
+
     </form>
+    <div class="problem-list">
+        {% if problems|length < 1 %}
+        <h3 class="no-problems">Looks Empty.. Create a Problem</h3>
+        {% else %}
+        <ul>
+            {% for problem in problems%} 
+            <li>
+            <div class="problem-card">
+                <div class="problem-text">{{problem}}</div>
+                <form action="/delete/{{problem.number}}" method="post">
+                    <button>Delete</button>
+                </form>
+            </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div> 
+
 </body>
 </html>

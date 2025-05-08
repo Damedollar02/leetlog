@@ -1,0 +1,74 @@
+$back_color:#000022;
+$title_color:#32DE8A;
+$text_color:#B5BAD0;
+$test_title:#F5D7E3;
+
+.title-class {
+    color: $test_title;
+    font-weight: bold;
+    font-size: 2.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 8px $test_title;
+
+}
+.no-problems{
+    color: $text_color;
+}
+.problem-list{
+    color:$text_color
+}
+
+.problem-text{
+    color: $test_title;
+    text-shadow: 2px 2px 8px $test_title;
+    font-weight: bold;
+}
+
+.problem-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: #1c1c2e;
+    margin-bottom: 1rem;
+  }
+  
+
+.form-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 0.75rem;
+}
+
+button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+body {
+    background-color: $back_color;
+    font-family: 'Inter', sans-serif
+  }
+
+input {
+    display: block;
+    margin: 0.5rem auto;
+    width: 80%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: $text_color;
+  }
+
+input::placeholder{
+    color: black;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+  

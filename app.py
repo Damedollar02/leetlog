@@ -32,12 +32,37 @@ class CodeProblem(db.Model):
 
 def index():
     if request.method == "POST":
-        problem_number = request.form.get("number")
-        priority = request.form.get("priority")
+        problem_number = int(request.form.get("number"))
+        priority = int(request.form.get("priority"))
         pattern = request.form.get("pattern")
         notes = request.form.get("notes")
+
+        new_problem = CodeProblem(
+            number = problem_number,
+            priority_level = priority,
+            pattern_type = pattern,
+            notes = notes,
+        )
+        try:
+            db.session.add(new_problem)
+            db.session.commit()
+            return redirect(url_for('index'))
+        except:
+            return "There was an issue adding your leetcode problem"
     else:
-        return "HOME"
+        problems = CodeProblem.query.order_by(CodeProblem.priority_level).all()
+        return render_template("index.html", problems=problems)
+    
+
+@app.route("/delete/<int:number>", methods=["POST"])
+def delete(number):
+    record_to_delete = CodeProblem.query.get_or_404(number)
+    try:
+        db.session.delete(record_to_delete)
+        db.session.commit()
+        return redirect(url_for('index'))
+    except:
+        return "There was an issue deleting the problem"
 
 
 
