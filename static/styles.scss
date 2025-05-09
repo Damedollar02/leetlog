@@ -11,12 +11,45 @@ $test_title:#F5D7E3;
     text-shadow: 2px 2px 8px $test_title;
 
 }
+.main-sections {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    border: solid 3px $text_color;
+    border-radius: 0.40rem;
+    margin: 0 auto;
+}
+
+.ai-analysis {
+    color: $test_title;
+    width: 40%;
+    text-align: center;
+    text-shadow: 2px 2px 8px $test_title;
+    border: solid 3px $text_color;
+    
+}
+
+.mode {
+    color: $test_title;
+    text-align: center;
+    width: 30%;
+    text-shadow: 2px 2px 8px $test_title;
+    border: solid 3px $text_color;
+    
+}
+
+.problem-list{
+    color:$text_color;
+    width:30%;
+    text-align: center;
+    border: solid 3px $text_color;
+   
+}
+
 .no-problems{
     color: $text_color;
 }
-.problem-list{
-    color:$text_color
-}
+
 
 .problem-text{
     color: $test_title;

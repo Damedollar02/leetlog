@@ -17,6 +17,7 @@
         <button type="submit">Add Problem</button>
 
     </form>
+    <div class="main-sections">
     <div class="problem-list">
         {% if problems|length < 1 %}
         <h3 class="no-problems">Looks Empty.. Create a Problem</h3>
@@ -34,7 +35,20 @@
             {% endfor %}
         </ul>
         {% endif %}
-    </div> 
+    </div>
+    <div class="ai-analysis">
+        <h2>AI ANALYSIS</h2>
+        <form action="/analyze" method="post">
+            <button>Generate a Summary</button>
+        </form>
+        {% if summary %}
+        <p>{{summary}}</p>
+        {% endif %}
+    </div>
+    <div class="mode">
+        <h2>MODE</h2>
+    </div>
+</div>
 
 </body>
 </html>

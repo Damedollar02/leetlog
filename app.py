@@ -2,7 +2,9 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_scss import Scss
-
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
 
 #Configure the App
 app = Flask(__name__)
@@ -10,6 +12,9 @@ Scss(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 
 db = SQLAlchemy(app)
+
+load_dotenv()
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 #Database Structure (works as a blueprint for the actual db)
 class CodeProblem(db.Model):
@@ -29,7 +34,6 @@ class CodeProblem(db.Model):
 
 #Homepage Route
 @app.route("/", methods=["POST", "GET"])
-
 def index():
     if request.method == "POST":
         problem_number = int(request.form.get("number"))
@@ -53,7 +57,7 @@ def index():
         problems = CodeProblem.query.order_by(CodeProblem.priority_level).all()
         return render_template("index.html", problems=problems)
     
-
+#delete record from db
 @app.route("/delete/<int:number>", methods=["POST"])
 def delete(number):
     record_to_delete = CodeProblem.query.get_or_404(number)
@@ -63,6 +67,49 @@ def delete(number):
         return redirect(url_for('index'))
     except:
         return "There was an issue deleting the problem"
+
+
+@app.route("/analyze", methods=["POST"])
+def analyze():
+    problems = CodeProblem.query.all()
+
+    if not problems:
+        return render_template(
+            "index.html",
+            problems=problems,
+            summary="No problems to analyze. Please add some first."
+        )
+
+    problem_list = []
+
+    for problem in problems:
+        problem_list.append(
+            f"Problem #{problem.number}: Priority Level : {problem.priority_level} Pattern : {problem.pattern_type}"
+        )
+
+    ai_input = (
+    "Here is a list of LeetCode problems I've stored to review.\n"
+    "A higher priority indicates I'm having a harder time solving the problem.\n"
+    "Analyze my strengths, weaknesses, and what I should focus on. Be concise.\n"
+    "Here's the list:\n" +
+    "\n".join(problem_list)
+)
+
+
+
+
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages =[
+            {"role": "user", "content": ai_input}
+        ]
+    )
+    summary = response.choices[0].message.content
+    return render_template("index.html", problems=problems, summary=summary)
+
+
+
+
 
 
 

@@ -6,11 +6,39 @@
   text-shadow: 2px 2px 8px #F5D7E3;
 }
 
-.no-problems {
-  color: #B5BAD0;
+.main-sections {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  border: solid 3px #B5BAD0;
+  border-radius: 0.4rem;
+  margin: 0 auto;
+}
+
+.ai-analysis {
+  color: #F5D7E3;
+  width: 40%;
+  text-align: center;
+  text-shadow: 2px 2px 8px #F5D7E3;
+  border: solid 3px #B5BAD0;
+}
+
+.mode {
+  color: #F5D7E3;
+  text-align: center;
+  width: 30%;
+  text-shadow: 2px 2px 8px #F5D7E3;
+  border: solid 3px #B5BAD0;
 }
 
 .problem-list {
+  color: #B5BAD0;
+  width: 30%;
+  text-align: center;
+  border: solid 3px #B5BAD0;
+}
+
+.no-problems {
   color: #B5BAD0;
 }
 
