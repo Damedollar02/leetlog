@@ -1,9 +1,28 @@
-.title-class {
-  color: #F5D7E3;
-  font-weight: bold;
-  font-size: 2.5rem;
+.logo-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 0;
+  line-height: 0;
+}
+
+.tagline {
+  color: #B5BAD0;
   text-align: center;
-  text-shadow: 2px 2px 8px #F5D7E3;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 4px #F5D7E3;
+}
+
+.logo-class {
+  width: 260px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .main-sections {
@@ -15,7 +34,15 @@
   margin: 0 auto;
 }
 
+.ai-button {
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
 .ai-analysis {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
   color: #F5D7E3;
   width: 40%;
   text-align: center;
@@ -36,6 +63,7 @@
   width: 30%;
   text-align: center;
   border: solid 3px #B5BAD0;
+  list-style: none;
 }
 
 .no-problems {
@@ -55,8 +83,23 @@
   align-items: center;
   padding: 1rem;
   border-radius: 0.5rem;
-  background-color: #1c1c2e;
+  background-color: rgba(101, 98, 107, 0.368627451);
   margin-bottom: 1rem;
+}
+
+.problem-text p {
+  margin: 4px 0;
+}
+
+.problem-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 1rem;
+}
+
+.problem-buttons button {
+  font-size: 0.75rem;
 }
 
 .form-card {
@@ -73,6 +116,12 @@ button {
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 12px;
+}
+
+button:hover {
+  color: #F5D7E3;
+  text-shadow: 2px 2px 8px #F5D7E3;
+  background-color: #111144;
 }
 
 body {

@@ -3,14 +3,34 @@ $title_color:#32DE8A;
 $text_color:#B5BAD0;
 $test_title:#F5D7E3;
 
-.title-class {
-    color: $test_title;
-    font-weight: bold;
-    font-size: 2.5rem;
+.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;    
+    margin-bottom: 0;    
+    line-height: 0;       
+  }
+  .tagline {
+    color: $text_color;
     text-align: center;
-    text-shadow: 2px 2px 8px $test_title;
-
-}
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 4px $test_title;
+  }
+  
+  .logo-class {
+    width: 260px;         
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  
+  
 .main-sections {
     display: flex;
     width: 100%;
@@ -20,7 +40,15 @@ $test_title:#F5D7E3;
     margin: 0 auto;
 }
 
+.ai-button {
+ margin-top: -10px;
+ margin-bottom: 15px;
+}
+
 .ai-analysis {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     color: $test_title;
     width: 40%;
     text-align: center;
@@ -43,6 +71,7 @@ $test_title:#F5D7E3;
     width:30%;
     text-align: center;
     border: solid 3px $text_color;
+    list-style: none;
    
 }
 
@@ -64,8 +93,23 @@ $test_title:#F5D7E3;
     align-items: center;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: #1c1c2e;
+    background-color: #65626b5e;
     margin-bottom: 1rem;
+  }
+
+  .problem-text p {
+    margin: 4px 0;
+  }
+
+  .problem-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-left: 1rem;
+  }
+
+  .problem-buttons button {
+    font-size: 0.75rem;
   }
   
 
@@ -83,6 +127,12 @@ button {
     padding: 0.5rem 1rem;
     cursor: pointer;
     border-radius: 12px;
+}
+
+button:hover {
+    color: $test_title;
+    text-shadow: 2px 2px 8px $test_title;
+    background-color: #111144;
 }
 
 body {

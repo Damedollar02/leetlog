@@ -8,7 +8,10 @@
     <title>LeetLog</title>
 </head>
 <body>
-    <h2 class="title-class">LeetLog</h2>
+    <div class="logo-wrapper">
+        <img src="{{ url_for('static', filename='LeetLog2.png') }}" alt="LeetLog Logo" class="logo-class">
+        <p class="tagline">A smart way to organize your LeetCode grind.</p>
+    </div>
     <form class="form-card" action="{{url_for('index')}}" method="post">
         <input type="text" name="number" placeholder="Please Enter the Number of Your Problem">
         <input type="text" name="priority" placeholder="Enter Priority Level">
@@ -22,25 +25,32 @@
         {% if problems|length < 1 %}
         <h3 class="no-problems">Looks Empty.. Create a Problem</h3>
         {% else %}
-        <ul>
-            {% for problem in problems%} 
-            <li>
+            {% for problem in problems %}
             <div class="problem-card">
-                <div class="problem-text">{{problem}}</div>
+                <div class="problem-text">
+                    <p>Problem Number: {{ problem.number }}</p>
+                    <p>Priority: {{ problem.priority_level }}</p>
+                    <p>Pattern: {{ problem.pattern_type }}</p>
+                </div>                
+                <div class="problem-buttons">
                 <form action="/delete/{{problem.number}}" method="post">
                     <button>Delete</button>
                 </form>
+                <form action="/update/{{problem.number}}" method="post">
+                    <button>Edit</button>
+                </form>
             </div>
-            </li>
+            </div>
             {% endfor %}
-        </ul>
         {% endif %}
     </div>
     <div class="ai-analysis">
         <h2>AI ANALYSIS</h2>
+        <div class="ai-button">
         <form action="/analyze" method="post">
             <button>Generate a Summary</button>
         </form>
+    </div>
         {% if summary %}
         <p>{{summary}}</p>
         {% endif %}

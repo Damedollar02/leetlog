@@ -26,10 +26,9 @@ class CodeProblem(db.Model):
 #Output format for db, useful when debugging 
     def __repr__(self):
         return (
-        f"Problem Number: {self.number}, "
-        f"Priority: {self.priority_level}, "
-        f"Pattern: {self.pattern_type}, "
-        f"Notes: {self.notes}"
+        f"Problem Number: {self.number}\n"
+        f"Priority: {self.priority_level}\n"
+        f"Pattern: {self.pattern_type}\n"
         )
 
 #Homepage Route
@@ -68,6 +67,43 @@ def delete(number):
     except:
         return "There was an issue deleting the problem"
 
+# edit record FIX ME
+@app.route("/update/<int:number>", methods=["POST"])
+def update(number):
+    record_to_update = CodeProblem.query.get_or_404(number)
+    
+    result = validate_form_types(request.form, record_to_update)
+
+    if result is not True:
+        return result
+    
+    db.session.commit()
+
+
+def validate_form_types(form_data, problem_record):
+    try:
+        problem_number = int(form_data.get("number"))
+        priority = int(form_data.get("priority"))
+        pattern = form_data.get("pattern")
+        notes = form_data.get("notes")
+
+        if not pattern:
+            raise ValueError("Pattern is required.")
+
+        problem_record.number = problem_number
+        problem_record.priority_level = priority
+        problem_record.pattern_type = pattern
+        problem_record.notes = notes
+
+        return True
+
+    except (ValueError, TypeError) as e:
+        return f"Validation error: {e}"
+
+
+
+    
+
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
@@ -94,8 +130,6 @@ def analyze():
     "Here's the list:\n" +
     "\n".join(problem_list)
 )
-
-
 
 
     response = client.chat.completions.create(
