@@ -1,9 +1,65 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #000022;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  background-color: #000022 !important;
+  border-bottom: 1px solid #B5BAD0;
+  padding: 0.5rem 0 !important;
+  margin: 0 !important;
+  width: 100%;
+}
+.navbar .container {
+  padding: 0 2rem;
+}
+.navbar .navbar-brand {
+  color: #F5D7E3 !important;
+  font-weight: bold;
+}
+.navbar .navbar-brand:hover {
+  color: #32DE8A !important;
+}
+.navbar .navbar-nav .nav-link {
+  color: #F5D7E3 !important;
+  margin: 0 1rem;
+}
+.navbar .navbar-nav .nav-link:hover {
+  color: #32DE8A !important;
+}
+.navbar .navbar-toggler {
+  border-color: #B5BAD0;
+}
+.navbar .navbar-toggler-icon {
+  background-color: #B5BAD0;
+}
+
+main.container {
+  padding-top: 4rem;
+}
+
 .logo-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 2rem;
   margin-bottom: 0;
   line-height: 0;
 }
@@ -37,6 +93,16 @@
 .ai-button {
   margin-top: -10px;
   margin-bottom: 15px;
+}
+.ai-button button {
+  background-color: #000022;
+  color: #F5D7E3;
+  border: 1px solid #B5BAD0;
+}
+.ai-button button:hover {
+  background-color: #111144;
+  color: #F5D7E3;
+  text-shadow: 2px 2px 8px #F5D7E3;
 }
 
 .ai-analysis {
@@ -75,6 +141,9 @@
   text-shadow: 2px 2px 8px #F5D7E3;
   font-weight: bold;
 }
+.problem-text p {
+  margin: 4px 0;
+}
 
 .problem-card {
   display: flex;
@@ -87,19 +156,22 @@
   margin-bottom: 1rem;
 }
 
-.problem-text p {
-  margin: 4px 0;
-}
-
 .problem-buttons {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-left: 1rem;
 }
-
 .problem-buttons button {
   font-size: 0.75rem;
+  background-color: #000022;
+  color: #F5D7E3;
+  border: 1px solid #B5BAD0;
+}
+.problem-buttons button:hover {
+  background-color: #111144;
+  color: #F5D7E3;
+  text-shadow: 2px 2px 8px #F5D7E3;
 }
 
 .form-card {
@@ -110,23 +182,19 @@
   padding: 2rem;
   border-radius: 0.75rem;
 }
-
-button {
+.form-card button {
+  background-color: #000022;
+  color: #F5D7E3;
+  border: 1px solid #B5BAD0;
   font-size: 1rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 12px;
 }
-
-button:hover {
+.form-card button:hover {
+  background-color: #111144;
   color: #F5D7E3;
   text-shadow: 2px 2px 8px #F5D7E3;
-  background-color: #111144;
-}
-
-body {
-  background-color: #000022;
-  font-family: "Inter", sans-serif;
 }
 
 input {
@@ -137,15 +205,28 @@ input {
   border-radius: 0.5rem;
   background-color: #B5BAD0;
 }
-
 input::-moz-placeholder {
   color: black;
   font-style: italic;
   font-size: 0.9rem;
 }
-
 input::placeholder {
   color: black;
   font-style: italic;
   font-size: 0.9rem;
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 12px !important;
+  background-color: #000022 !important;
+  color: #F5D7E3 !important;
+  border: 1px solid #B5BAD0 !important;
+}
+button:hover {
+  background-color: #111144 !important;
+  color: #F5D7E3 !important;
+  text-shadow: 2px 2px 8px #F5D7E3;
 }/*# sourceMappingURL=styles.css.map */

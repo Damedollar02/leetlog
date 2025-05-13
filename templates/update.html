@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>LeetLog</title>
+</head>
+<body>
+    <div class="logo-wrapper">
+        <img src="{{ url_for('static', filename='LeetLog2.png') }}" alt="LeetLog Logo" class="logo-class">
+        <p class="tagline">A smart way to organize your LeetCode grind.</p>
+    </div>
+    <form class="form-card" action="{{url_for('update', number=problem.number)}}" method="post">
+        <input type="text" name="number" value="{{ problem.number }}" placeholder="Please Enter the Number of Your Problem">
+        <input type="text" name="priority" value="{{ problem.priority_level }}" placeholder="Enter Priority Level">
+        <input type="text" name="pattern" value="{{ problem.pattern_type }}" placeholder="Pattern Type">
+        <input type="text" name="notes" value="{{ problem.notes }}" placeholder="Notes">
+        <button type="submit">Update Problem</button>
+    </form>
+</body>
+</html>

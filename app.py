@@ -38,13 +38,12 @@ def index():
         problem_number = int(request.form.get("number"))
         priority = int(request.form.get("priority"))
         pattern = request.form.get("pattern")
-        notes = request.form.get("notes")
 
         new_problem = CodeProblem(
             number = problem_number,
             priority_level = priority,
             pattern_type = pattern,
-            notes = notes,
+            notes = "" 
         )
         try:
             db.session.add(new_problem)
@@ -67,17 +66,20 @@ def delete(number):
     except:
         return "There was an issue deleting the problem"
 
-# edit record FIX ME
-@app.route("/update/<int:number>", methods=["POST"])
+@app.route("/update/<int:number>", methods=["POST", "GET"])
 def update(number):
-    record_to_update = CodeProblem.query.get_or_404(number)
-    
-    result = validate_form_types(request.form, record_to_update)
+    if request.method == "POST":
+        record_to_update = CodeProblem.query.get_or_404(number)
+        result = validate_form_types(request.form, record_to_update)
 
-    if result is not True:
-        return result
-    
-    db.session.commit()
+        if result is not True:
+            return result
+        
+        db.session.commit()
+        return redirect(url_for('index'))
+    else:
+        record_to_update = CodeProblem.query.get_or_404(number)
+        return render_template("update.html", problem=record_to_update)
 
 
 def validate_form_types(form_data, problem_record):
@@ -85,7 +87,6 @@ def validate_form_types(form_data, problem_record):
         problem_number = int(form_data.get("number"))
         priority = int(form_data.get("priority"))
         pattern = form_data.get("pattern")
-        notes = form_data.get("notes")
 
         if not pattern:
             raise ValueError("Pattern is required.")
@@ -93,7 +94,7 @@ def validate_form_types(form_data, problem_record):
         problem_record.number = problem_number
         problem_record.priority_level = priority
         problem_record.pattern_type = pattern
-        problem_record.notes = notes
+        problem_record.notes = "" 
 
         return True
 

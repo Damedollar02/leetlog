@@ -3,16 +3,80 @@ $title_color:#32DE8A;
 $text_color:#B5BAD0;
 $test_title:#F5D7E3;
 
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: $back_color;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+
+.navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    background-color: $back_color !important;
+    border-bottom: 1px solid $text_color;
+    padding: 0.5rem 0 !important;
+    margin: 0 !important;
+    width: 100%;
+    
+    .container {
+        padding: 0 2rem;
+    }
+    
+    .navbar-brand {
+        color: $test_title !important;
+        font-weight: bold;
+        &:hover {
+            color: $title_color !important;
+        }
+    }
+
+    .navbar-nav .nav-link {
+        color: $test_title !important;
+        margin: 0 1rem;
+        &:hover {
+            color: $title_color !important;
+        }
+    }
+
+    .navbar-toggler {
+        border-color: $text_color;
+        
+        &-icon {
+            background-color: $text_color;
+        }
+    }
+}
+
+
+main.container {
+    padding-top: 4rem;
+}
+
 .logo-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;    
+    margin-top: 2rem;    
     margin-bottom: 0;    
     line-height: 0;       
-  }
-  .tagline {
+}
+
+.tagline {
     color: $text_color;
     text-align: center;
     margin-top: 0.5rem;
@@ -20,16 +84,14 @@ $test_title:#F5D7E3;
     font-style: italic;
     letter-spacing: 0.5px;
     text-shadow: 1px 1px 4px $test_title;
-  }
+}
   
-  .logo-class {
+.logo-class {
     width: 260px;         
     height: auto;
     display: block;
     margin: 0 auto;
-  }
-  
-  
+}
   
 .main-sections {
     display: flex;
@@ -41,8 +103,20 @@ $test_title:#F5D7E3;
 }
 
 .ai-button {
- margin-top: -10px;
- margin-bottom: 15px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    
+    button {
+      background-color: $back_color;
+      color: $test_title;
+      border: 1px solid $text_color;
+      
+      &:hover {
+        background-color: #111144;
+        color: $test_title;
+        text-shadow: 2px 2px 8px $test_title;
+      }
+    }
 }
 
 .ai-analysis {
@@ -54,7 +128,6 @@ $test_title:#F5D7E3;
     text-align: center;
     text-shadow: 2px 2px 8px $test_title;
     border: solid 3px $text_color;
-    
 }
 
 .mode {
@@ -63,27 +136,28 @@ $test_title:#F5D7E3;
     width: 30%;
     text-shadow: 2px 2px 8px $test_title;
     border: solid 3px $text_color;
-    
 }
 
-.problem-list{
-    color:$text_color;
-    width:30%;
+.problem-list {
+    color: $text_color;
+    width: 30%;
     text-align: center;
     border: solid 3px $text_color;
     list-style: none;
-   
 }
 
-.no-problems{
+.no-problems {
     color: $text_color;
 }
 
-
-.problem-text{
+.problem-text {
     color: $test_title;
     text-shadow: 2px 2px 8px $test_title;
     font-weight: bold;
+    
+    p {
+      margin: 4px 0;
+    }
 }
 
 .problem-card {
@@ -95,23 +169,27 @@ $test_title:#F5D7E3;
     border-radius: 0.5rem;
     background-color: #65626b5e;
     margin-bottom: 1rem;
-  }
+}
 
-  .problem-text p {
-    margin: 4px 0;
-  }
-
-  .problem-buttons {
+.problem-buttons {
     display: flex;
     flex-direction: column;
     gap: 8px;
     margin-left: 1rem;
-  }
-
-  .problem-buttons button {
-    font-size: 0.75rem;
-  }
-  
+    
+    button {
+      font-size: 0.75rem;
+      background-color: $back_color;
+      color: $test_title;
+      border: 1px solid $text_color;
+      
+      &:hover {
+        background-color: #111144;
+        color: $test_title;
+        text-shadow: 2px 2px 8px $test_title;
+      }
+    }
+}
 
 .form-card {
     width: 100%;
@@ -120,25 +198,23 @@ $test_title:#F5D7E3;
     text-align: center;
     padding: 2rem;
     border-radius: 0.75rem;
+    
+    button {
+      background-color: $back_color;
+      color: $test_title;
+      border: 1px solid $text_color;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 12px;
+      
+      &:hover {
+        background-color: #111144;
+        color: $test_title;
+        text-shadow: 2px 2px 8px $test_title;
+      }
+    }
 }
-
-button {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    border-radius: 12px;
-}
-
-button:hover {
-    color: $test_title;
-    text-shadow: 2px 2px 8px $test_title;
-    background-color: #111144;
-}
-
-body {
-    background-color: $back_color;
-    font-family: 'Inter', sans-serif
-  }
 
 input {
     display: block;
@@ -147,11 +223,28 @@ input {
     padding: 0.5rem;
     border-radius: 0.5rem;
     background-color: $text_color;
-  }
+    
+    &::placeholder {
+      color: black;
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+}
 
-input::placeholder{
-    color: black;
-    font-style: italic;
-    font-size: 0.9rem;
+// Fix button styling globally
+button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 12px !important;
+    background-color: $back_color !important;
+    color: $test_title !important;
+    border: 1px solid $text_color !important;
+
+    &:hover {
+        background-color: #111144 !important;
+        color: $test_title !important;
+        text-shadow: 2px 2px 8px $test_title;
+    }
 }
   
